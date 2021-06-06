@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'crispy_forms',
 
     # MyApps
     'user',
@@ -105,7 +106,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Tehran'
 
@@ -135,12 +135,14 @@ AUTH_USER_MODEL = 'user.Account'
 
 from django.utils.translation import ugettext_lazy as _
 
-# LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)
+LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)
 
 LANGUAGES = [
     ('en', _('English')),
     ('fa', _('Persian')),
 ]
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+MODELTRANSLATION_LANGUAGES = ('en', 'fa')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -149,3 +151,10 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'djangosample400@gmail.com'
+EMAIL_HOST_PASSWORD = 'SocialMedia1400'
+EMAIL_PORT = 587

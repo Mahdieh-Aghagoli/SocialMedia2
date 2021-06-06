@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="sign-up-container" style="height: 300px">
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="number" name="code" placeholder={% translate 'Enter Your Code...' %} class="sms-verify">
+            <button type="submit" class="custom-btn" style="width:90px;height: 31px">{% translate 'confirm' %}</button>
+            <a href="{% url 'send-sms' user.slug %}" class="custom-btn"
+               style="padding:6px 15px">{% translate 'Resend' %}</a>
+        </form>
+    </div>
+{% endblock %}
